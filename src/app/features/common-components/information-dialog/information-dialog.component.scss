@@ -1,0 +1,19 @@
+.header {
+    background: white;
+    text-transform: lowercase;
+    position: absolute;
+    left: 0;
+    top: 40%;
+    right: 0;
+    margin: 0 auto 10%;
+    width: 500px;
+    height: 350px;
+    border-radius: 20px;
+}
+.header::first-letter, .dialog-message::first-letter {
+    text-transform: uppercase;
+}
+.btn-cancel {
+    background-color: red;
+    color: #fff;
+}
