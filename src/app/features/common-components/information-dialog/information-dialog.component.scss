@@ -7,13 +7,28 @@
     right: 0;
     margin: 0 auto 10%;
     width: 500px;
-    height: 350px;
+    height: 250px;
     border-radius: 20px;
 }
 .header::first-letter, .dialog-message::first-letter {
     text-transform: uppercase;
 }
-.btn-cancel {
-    background-color: red;
-    color: #fff;
+.mat-dialog-title{
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    font-size: 30px;
+    color: black;
+    font-weight: 900;
+}
+
+.dialog-message {
+    font-size: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+button {
+    margin: 40px auto 0;
+    display: block;
 }

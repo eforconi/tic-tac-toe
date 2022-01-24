@@ -4,9 +4,8 @@
 <div class="board-container">
     <div 
       *ngFor="let cell of boardState; let i=index"
-      [attr.data-index]="i"
       class="cell"
       (click)="cellClicked(i)">
-      <div class="linear" [ngClass]="boardState[i] == 'X' ? 'playerX' : 'playerY'">{{ boardState[i] }}</div>
+      <div [ngClass]="boardState[i] == 'X' ? 'playerX' : 'playerY'">{{ boardState[i] }}</div>
     </div>
 </div>

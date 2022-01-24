@@ -25,9 +25,8 @@ export class AppComponent {
 ];
 
 options:InformationDialog = {
-  title:"Congratulations!!!!",
+  title:"¡¡¡Congratulations!!!!",
   message:`The Winner is ${this.currentPlayer}`,
-  background: 'url(https://i.pinimg.com/originals/e5/83/3e/e5833e1bea7d379f0f4e4ae250b7cf81.gif)',
   confirmText: 'Done',
 };
 
@@ -35,7 +34,6 @@ constructor(private dialogService: InformationDialogService){}
 
 
   cellClicked(index:number){
-    console.log(index);
     if (this.boardState[index] !== "" || !this.gameActive) {
       return;
     }
@@ -44,29 +42,42 @@ constructor(private dialogService: InformationDialogService){}
   }
 
   cellPlayed(index:number) {
-    console.log(index);
     this.turnCounter+=1;
     this.boardState[index] = this.currentPlayer;
   }
   checkWinner(){
     if(this.turnCounter>=4){
-      let roundWon = false;
       for (let i = 0; i <= 7; i++) {
           const winCondition = this.winConditions[i];
           let a = this.boardState[winCondition[0]];
           let b = this.boardState[winCondition[1]];
           let c = this.boardState[winCondition[2]];
-          console.log(a,b,c);
           if (a === '' || b === '' || c === '') {
               continue;
           }
           if (a === b && b === c) {
+            this.options.title = "¡¡¡Congratulations!!!!",
+            this.options.message=`The Winner is ${this.currentPlayer}`;
+            this.options.background = 'url(https://i.pinimg.com/originals/e5/83/3e/e5833e1bea7d379f0f4e4ae250b7cf81.gif)';
+
             this.dialogService.open(this.options);
             this.gameActive = false;
             this.restartGame();
-            break
+            return;
           }
       }
+    }
+    if(this.turnCounter === 8){
+      this.options = {
+        title:"It's a Draw!!!!",
+        message:`There is no winner this time`,
+        background: '#85def3',
+        confirmText: 'Done',
+      };
+      this.dialogService.open(this.options);
+      this.gameActive = false;
+      this.restartGame();
+      return;
     }
     this.changePlayer();
   }
@@ -79,12 +90,7 @@ constructor(private dialogService: InformationDialogService){}
     this.gameActive = true;
     this.currentPlayer = "X";
     this.boardState = ["", "", "", "", "", "", "", "", ""];
-    if(this.turnCounter===8){
-      window.alert("Draw!")
-      this.gameActive = false;
-      this.restartGame();
-      return;
-    }
+    this.turnCounter = 0; 
   }
 }
 

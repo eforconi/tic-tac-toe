@@ -7,15 +7,12 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './information-dialog.component.html',
   styleUrls: ['./information-dialog.component.scss']
 })
-export class InformationDialogComponent implements OnInit {
+export class InformationDialogComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: InformationDialog,
     private mdDialogRef: MatDialogRef<InformationDialogComponent>
     ) {}
-
-  ngOnInit(): void {
-  }
 
   public cancel() {
     this.close(false);

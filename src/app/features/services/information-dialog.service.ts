@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, take } from 'rxjs';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { InformationDialogComponent } from '../common-components/information-dialog/information-dialog.component';
 import { InformationDialog } from 'src/app/models/information-dialog';
 @Injectable()
@@ -20,11 +19,4 @@ export class InformationDialogService {
         }
    });  
   }  
-  public confirmed(): Observable<any> {
-    return this.dialogRef.afterClosed().pipe(take(1), map(res => {
-        return res;
-      }
-    ));
-  }
-
 }
